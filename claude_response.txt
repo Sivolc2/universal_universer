@@ -1,0 +1,54 @@
+Based on the paper and the provided background information, I can propose the following set of hypergraph rules to model the ultra-slow-roll (USR) inflation scenario:
+
+```wolfram
+(* Initial State *)
+(* The initial state represents the slow-roll phase before the USR phase. *)
+initialState = {{ϕ, ϕ̇}, {H, ϵ, η}}
+
+(* Background Evolution Rules *)
+(* These rules govern the evolution of the background quantities during the different phases. *)
+backgroundRules = {
+  (* Slow-Roll Phase *)
+  {{ϕ, ϕ̇}, {H, ϵ, η}} -> {{ϕ + ϕ̇ Δt, ϕ̇ + ϵ H Δt}, {H - ϵ H Δt, ϵ, η}} /; ϵ ≪ 1 && η ≈ 0,
+
+  (* USR Phase *)
+  {{ϕ, ϕ̇}, {H, ϵ, η}} -> {{ϕ + ϕ̇ Δt, ϕ̇ Exp[-2 η Δt]}, {H - ϵ H Δt, ϵ Exp[-2 η Δt], η}} /; ϵ ≪ 1 && |η| ≫ 1,
+
+  (* End of USR Phase *)
+  {{ϕ, ϕ̇}, {H, ϵ, η}} -> {{ϕ + ϕ̇ Δt, ϕ̇ + ϵ H Δt}, {H - ϵ H Δt, ϵ, η}} /; ϵ ≪ 1 && η ≈ -0.5
+}
+
+(* Perturbation Evolution Rules *)
+(* These rules govern the evolution of the perturbations during the different phases. *)
+perturbationRules = {
+  (* Slow-Roll Phase *)
+  {uk, duk/dN} -> {uk + (duk/dN) ΔN, (duk/dN) + (k^2 - 9/4) uk ΔN} /; ϵ ≪ 1 && η ≈ 0,
+
+  (* USR Phase *)
+  {uk, duk/dN} -> {uk + (duk/dN) ΔN, (duk/dN) + (k^2 - ν^2) uk ΔN} /; ϵ ≪ 1 && |η| ≫ 1,
+
+  (* End of USR Phase *)
+  {uk, duk/dN} -> {uk + (duk/dN) ΔN, (duk/dN) + (k^2 - 9/4) uk ΔN} /; ϵ ≪ 1 && η ≈ -0.5
+}
+
+(* Nonlinear Correction Rules *)
+(* These rules capture the nonlinear corrections to the background and perturbations. *)
+nonlinearRules = {
+  (* Backreaction on the Background *)
+  {ϕ̇, Pζ} -> {ϕ̇ / (1 + Sqrt[Pζ]), Pζ / (1 + Sqrt[Pζ])^2} /; Pζ > 10^-4,
+
+  (* Nonlinear Corrections to Perturbations *)
+  {uk, ν} -> {uk + f[ν, Pζ], ν + g[ν, Pζ]} /; Pζ > 10^-2
+}
+```
+
+**Notes:**
+
+- The initial state represents the slow-roll phase before the USR phase, with the inflaton field `ϕ`, its velocity `ϕ̇`, the Hubble parameter `H`, the slow-roll parameters `ϵ` and `η`.
+- The `backgroundRules` govern the evolution of the background quantities during the different phases: slow-roll, USR, and the end of USR.
+- The `perturbationRules` govern the evolution of the perturbations `uk` (related to the curvature perturbation `ζ`) during the different phases, using the Sasaki-Mukhanov equation.
+- The `nonlinearRules` capture the nonlinear corrections observed in the simulations:
+  - The first rule describes the backreaction of the perturbations on the background inflaton velocity `ϕ̇` and the curvature power spectrum `Pζ`, based on the relation found in the simulations.
+  - The second rule allows for nonlinear corrections to the perturbations `uk` and the effective mass term `ν`, which depend on the specific form of the potential and the value of `Pζ`. The functions `f` and `g` can be determined from the simulation data or analytical calculations.
+
+These rules capture the key aspects of the USR inflation scenario, including the background evolution, the perturbation dynamics, and the nonlinear corrections observed in the simulations. However, it is important to note that these rules are simplified representations, and more detailed modeling may be required for specific applications or to capture additional features of the system.

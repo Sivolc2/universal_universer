@@ -1,0 +1,178 @@
+ArXiv Astrophysics Papers List (Generated on 2024-11-02 18:30:46)
+================================================================================
+
+1. What is the origin of the JWST SMBHs?
+   Authors: John Ellis, Malcolm Fairbairn, Juan Urrutia, Ville Vaskonen
+   arXiv ID: arXiv:2410.24224
+   Link: https://arxiv.org/abs/arXiv:2410.24224
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+2. Generative modelling for mass-mapping with fast uncertainty quantification
+   Authors: Jessica J.Whitney, Tobías I. Liaudat, Matthew A. Price, Matthijs Mars, Jason D. McEwen
+   arXiv ID: arXiv:2410.24197
+   Link: https://arxiv.org/abs/arXiv:2410.24197
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+3. StarDICE III: Characterization of the photometric instrument with a Collimated Beam Projector
+   Authors: Thierry Souverin, Jérémy Neveu, Marc Betoule, Sébastien Bongard, Christopher W. Stubbs, Elana Urbach, Sasha Brownsberger, Pierre Éric Blanc, Johann Cohen Tanugi, Sylvie Dagoret-Campagne, Fabrice Feinstein, Delphine Hardin, Claire Juramy, Laurent Le Guillou, Auguste Le Van Suu, Marc Moniez, Bertrand Plez, Nicolas Regnault, Eduardo Sepulveda, Kélian Sommer
+   arXiv ID: arXiv:2410.24173
+   Link: https://arxiv.org/abs/arXiv:2410.24173
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+4. Spectral features and variable circular polarisation in the radio emission from the pre-cataclysmic variable QS Vir
+   Authors: M. E. Ridder, A. K. Hughes, C. O. Heinke, G. R. Sivakoff, R. D. Sydora
+   arXiv ID: arXiv:2410.24157
+   Link: https://arxiv.org/abs/arXiv:2410.24157
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+5. Measurement of the power spectrum turnover scale from the cross-correlation between CMB lensing and {\sl Quaia}
+   Authors: David Alonso, Oleksandr Hetmantsev, Giulio Fabbian, Anze Slosar, Kate Storey-Fisher
+   arXiv ID: arXiv:2410.24134
+   Link: https://arxiv.org/abs/arXiv:2410.24134
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+6. Inconsistencies in Simple Thermal Model Results for Near-Earth Asteroids between Infrared Telescope Facility SpeX and NEOWISE Data
+   Authors: Samuel A. Myers, Ellen S. Howell, Christopher Magri, Ronald J. Vervack Jr., Yanga R. Fernández, Mary L. Hinkle, Sean E. Marshall
+   arXiv ID: arXiv:2410.24101
+   Link: https://arxiv.org/abs/arXiv:2410.24101
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+7. First Light and Reionisation Epoch Simulations (FLARES) XVII: Learning the galaxy-halo connection at high redshifts
+   Authors: Maxwell G. A. Maltz, Peter A. Thomas, Christoper C. Lovell, William J. Roper, Aswin P. Vijayan, Dimitrios Irodotou, Shihong Liao, Louise T. C. Seeyave, Stephen M. Wilkins
+   arXiv ID: arXiv:2410.24082
+   Link: https://arxiv.org/abs/arXiv:2410.24082
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+8. Cosmology with Fast Radio Bursts
+   Authors: Marcin Glowacki, Khee-Gan Lee
+   arXiv ID: arXiv:2410.24072
+   Link: https://arxiv.org/abs/arXiv:2410.24072
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+9. Simulation-based inference of the 2D ex-situ stellar mass fraction distribution of galaxies using variational autoencoders
+   Authors: Eirini Angeloudi, Marc Huertas-Company, Jesús Falcón-Barroso, Regina Sarmiento, Daniel Walo-Martín, Annalisa Pillepich, Jesús Vega Ferrero
+   arXiv ID: arXiv:2410.24069
+   Link: https://arxiv.org/abs/arXiv:2410.24069
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+10. Deep Chandra Observations of NGC 5728. III: Probing the High-Resolution X-ray Morphology and Multiphase ISM Interactions in the Circumnuclear Region
+   Authors: Anna Trindade Falcao, G. Fabbiano, M. Elvis, A. Paggi, W. P. Maksym
+   arXiv ID: arXiv:2410.24061
+   Link: https://arxiv.org/abs/arXiv:2410.24061
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+11. Deep Search for a scattered light dust halo around Vega with the Hubble Space Telescope
+   Authors: Schuyler G. Wolff, András Gáspár, George H. Rieke, Jarron M. Leisenring, Kate Su, David Wilner, Luca Matrà, Marie Ygouf, Nicholas P. Balleringa
+   arXiv ID: arXiv:2410.24042
+   Link: https://arxiv.org/abs/arXiv:2410.24042
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+12. Are CMB derived cosmological parameters affected by foregrounds associated to nearby galaxies?
+   Authors: Facundo Toscano, Frode K. Hansen, Diego Garcia Lambas, Heliana Luparello, Pablo Fosalba, Enrique Gaztañaga
+   arXiv ID: arXiv:2410.24026
+   Link: https://arxiv.org/abs/arXiv:2410.24026
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+13. Cross-correlation of Luminous Red Galaxies with ML-selected AGN in HSC-SSP II: AGN classification and clustering with DESI spectroscopy
+   Authors: Rodrigo Córdova Rosado, Andy D. Goulding, Jenny E. Greene, Nickolas Kokron, Michael A. Strauss, ChangHoon Hahn, Grayson C. Petter, Ryan C. Hickox
+   arXiv ID: arXiv:2410.24020
+   Link: https://arxiv.org/abs/arXiv:2410.24020
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+14. An Overview of Solar Orbiter Observations of Interplanetary Shocks in Solar Cycle 25
+   Authors: D. Trotta, A. Dimmock, H. Hietala, X. Blanco-Cano, T. S. Horbury, R. Vainio, N. Dresing, I. C. Jebaraj, F. Espinosa, R. Gomez-Herrero, J. Rodriguez-Pacheco, Y. Kartavykh, D. Lario, J. Gieseler, M. Janvier, M. Maksimovic, N. Talebpour Sheshvan, C. J. Owen, E. K. J. Kilpua, R. Wimmer-Schweingruber
+   arXiv ID: arXiv:2410.24007
+   Link: https://arxiv.org/abs/arXiv:2410.24007
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+15. Deneb and the alpha Cygni Variables
+   Authors: Joyce A. Guzik, Brian Kloppenborg, Jason Jackiewicz
+   arXiv ID: arXiv:2410.23985
+   Link: https://arxiv.org/abs/arXiv:2410.23985
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+16. CEERS: Forging the First Dust -- Transition from Stellar to ISM Grain Growth in the Early Universe
+   Authors: Denis Burgarella, Véronique Buat, Patrice Theulé, Jorge Zavala, Pablo Arrabal Haro, Micaela B. Bagley, Médéric Boquien, Nikko Cleri, Tim Dewachter, Mark Dickinson, Henry C. Ferguson, Vital Fernández, Steven L. Finkelstein, Adriano Fontana, Eric Gawiser, Andrea Grazian, Norman Grogin, Benne W. Holwerda, Jeyhan S. Kartaltepe, Lisa Kewley, Allison Kirkpatrick, Dale Kocevski, Anton M. Koekemoer, Arianna Long, Jennifer Lotz, Ray A. Lucas, Bahram Mobasher, Casey Papovich, Pablo G. Pérez-González, Nor Pirzkal, Swara Ravindranath, Giulia Rodighiero, Yannick Roehlly, Caitlin Rose, Lise-Marie Seillé, Rachel Somerville, Steve Wilkins, Guang Yang, L. Y. Aaron Yung
+   arXiv ID: arXiv:2410.23959
+   Link: https://arxiv.org/abs/arXiv:2410.23959
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+17. Ultra-Slow-Roll Inflation on the Lattice: Backreaction and Nonlinear Effects
+   Authors: Angelo Caravano, Gabriele Franciolini, Sébastien Renaux-Petel
+   arXiv ID: arXiv:2410.23942
+   Link: https://arxiv.org/abs/arXiv:2410.23942
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+18. Abrupt Periodic Pulsation Resumptions in Deneb
+   Authors: Joyce A. Guzik, Helmut A. Abt, Jason Jackiewicz, Brian Kloppenborg
+   arXiv ID: arXiv:2410.23936
+   Link: https://arxiv.org/abs/arXiv:2410.23936
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+19. Seismic differences between solar magnetic cycles 23 and 24 for low-degree modes
+   Authors: Rafael A. Garcia, Sylvain N. Breton, David Salabert, Sushant C. Tripathy, Kiran Jain, Savita Mathur, Eva Panetier
+   arXiv ID: arXiv:2410.23928
+   Link: https://arxiv.org/abs/arXiv:2410.23928
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+20. Exploring the evolution of red and blue galaxies in different cosmic web environments using IllustrisTNG simulation
+   Authors: Biswajit Pandey, Anindita Nandi
+   arXiv ID: arXiv:2410.23896
+   Link: https://arxiv.org/abs/arXiv:2410.23896
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+21. Database of Candidate Targets for the LIFE Mission
+   Authors: Franziska Menti, José A. Caballero, Mark C. Wyatt, Antonio García Muñoz, Keivan G. Stassun, Eleonora Alei, Markus Demleitner, Grant Kennedy, Tim Lichtenberg, Uwe Schmitt, Jessica S. Schonhut-Stasik, Haiyang S. Wang, Sascha P. Quanz, the LIFE Collaboration
+   arXiv ID: arXiv:2410.23892
+   Link: https://arxiv.org/abs/arXiv:2410.23892
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+22. Minute time scale variability in $\gamma$-ray flare of BL Lacertae
+   Authors: Joysankar Majumdar, Raj Prince, Sakshi Maurya
+   arXiv ID: arXiv:2410.23778
+   Link: https://arxiv.org/abs/arXiv:2410.23778
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+23. Ultraviolet Photometry and Habitable Zones of Over 2700 Planet-Hosting Stars
+   Authors: Xue Li, Song Wang, Henggeng Han, Jifeng Liu
+   arXiv ID: arXiv:2410.23665
+   Link: https://arxiv.org/abs/arXiv:2410.23665
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+24. Origin of line broadening in fading granule: influence of small-scale turbulence
+   Authors: Ryohtaroh T. Ishikawa, Yukio Katsukawa
+   arXiv ID: arXiv:2410.23654
+   Link: https://arxiv.org/abs/arXiv:2410.23654
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
+25. Imaging of the Vega Debris System using JWST/MIRI
+   Authors: Kate Y. L. Su (1 and 2), Andras Gaspar (1)George H. Rieke (1)Renu Malhotra (1), Luca Matra (3), Schuyler Grace Wolff,  (1), Jarron M. Leisenring (1), Charles Beichman (4), Marie Ygouf (4) ((1) University of Arizona, (2) SSI, (3) Trinity College, (4) JPL)
+   arXiv ID: arXiv:2410.23636
+   Link: https://arxiv.org/abs/arXiv:2410.23636
+   Abstract: No abstract
+--------------------------------------------------------------------------------
+
