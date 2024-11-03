@@ -313,6 +313,89 @@ def parse_args():
     parser.add_argument('--pdf', type=str, help='Path to PDF file to analyze (skips arXiv fetch)')
     return parser.parse_args()
 
+def parse_wolfram_rule(rule_string):
+    """Parse Wolfram rule string into Python data structure"""
+    # Example input: "{{x,y},{x,z}} -> {{x,z},{x,w},{y,w},{z,w}}"
+    try:
+        # Split into left and right sides
+        left, right = rule_string.split('->')
+        
+        # Parse nested lists
+        def parse_sets(s):
+            # Remove outer braces and whitespace
+            s = s.strip('{ }').strip()
+            # Split into individual sets
+            sets = []
+            current_set = []
+            depth = 0
+            current = ''
+            
+            for char in s:
+                if char == '{':
+                    depth += 1
+                    if depth == 1:
+                        continue
+                elif char == '}':
+                    depth -= 1
+                    if depth == 0:
+                        current_set.append(current.strip())
+                        sets.append(current_set)
+                        current_set = []
+                        current = ''
+                        continue
+                elif char == ',' and depth == 0:
+                    continue
+                current += char
+                
+            return sets
+            
+        return parse_sets(left), parse_sets(right)
+    except Exception as e:
+        print(f"Error parsing rule: {e}")
+        return None
+
+def apply_rule(hypergraph, rule, match_point=None):
+    """Apply a hypergraph rewriting rule to a hypergraph"""
+    left_side, right_side = rule
+    
+    # Find all possible matches of left_side in hypergraph
+    matches = find_matches(hypergraph, left_side)
+    
+    if not matches:
+        return hypergraph  # No matches found
+        
+    # If match_point specified, use that; otherwise pick first match
+    match = match_point if match_point else matches[0]
+    
+    # Create new hypergraph with rule applied
+    new_hypergraph = hypergraph.copy()
+    
+    # Remove matched edges
+    for edge in match:
+        new_hypergraph.remove(edge)
+        
+    # Add new edges from right side
+    for new_edge in right_side:
+        new_hypergraph.add(new_edge)
+        
+    return new_hypergraph
+
+def find_matches(hypergraph, pattern):
+    """Find all matches of pattern in hypergraph"""
+    matches = []
+    # Implementation would need to handle:
+    # - Variable matching
+    # - Structural matching
+    # - Multiple possible matches
+    return matches
+
+def visualize_hypergraph(hypergraph):
+    """Visualize hypergraph using networkx and matplotlib"""
+    # Could use networkx for visualization
+    # Each hyperedge could be represented as a special node
+    # connected to its member nodes
+    pass
+
 def main():
     args = parse_args()
     
