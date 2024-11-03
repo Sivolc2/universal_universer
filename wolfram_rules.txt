@@ -1,0 +1,25 @@
+(* Generated Wolfram Rules from ArXiv Paper Analysis *)
+
+(* Block 1 *)
+(* Inflation Rules *)
+
+(* Initial conditions for slow-roll inflation *)
+initSlowRoll = {{phi, phidot}, {H, epsilon, eta}}
+
+(* Transition to ultra-slow-roll phase *)
+usrTransition = {{phi, phidot}, {H, epsilon, eta}} -> {{phi, phidotUSR}, {HUSR, epsilonUSR, etaUSR}}
+ 
+(* Ultra-slow-roll dynamics *)
+usrEvolution = {{phi, phidotUSR}, {HUSR, epsilonUSR, etaUSR}} -> {{phi', phidot'}, {H', epsilon', eta'}}
+
+(* Generate primordial perturbations *)
+perturbationGeneration = {{phi', phidot'}, {H', epsilon', eta'}} -> {{phi'', phidot''}, {H'', epsilon'', eta''}, {zetaModes}}
+
+(* Transition back to slow-roll after USR *)  
+postUsrTransition = {{phi'', phidot''}, {H'', epsilon'', eta''}, {zetaModes}} -> {{phif, phidotf}, {Hf, epsilonf, etaf}, {zetaSpectrum}}
+
+(* Rules for different USR scenarios *)
+caseI = {usrTransition, usrEvolution /. etaUSR -> 3.5, postUsrTransition}   (* Wands duality case *)
+caseII = {usrTransition, usrEvolution /. etaUSR -> 3.0, postUsrTransition}  (* Repulsive case *)  
+caseIII = {usrTransition, usrEvolution /. etaUSR -> 4.5, postUsrTransition} (* Attractive case *)
+
