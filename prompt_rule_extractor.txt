@@ -1,12 +1,8 @@
 Hiya! Please take the following string of rules and generate a initialization array.
-eg if the largest rule is:
-```
-usrTransition = {{phi, phidot}, {H, epsilon, eta}} -> {{phi, phidotUSR}, {HUSR, epsilonUSR, etaUSR}}
-```
+eg if the largest rule is: rulea = {{x, y}, {z, a, b}} -> {{x, c}, {d, e, f}}
 
-then return the initialization array of:
+then return only the initialization array of:
 ```wolfram
 initArray = {{1, 1}, {0, 2, 3}}
 ```
-Make sure to assign it numbers! It can't be variables.
-
+Make sure to assign it integer numbers! It can't be variables. Important that you only generate the initialization array, else the API will get confused. Thanks!

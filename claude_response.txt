@@ -1,55 +1,37 @@
-Based on the paper and the provided background information, here are some potential hypergraph rules and notes related to ultra-slow-roll (USR) inflation:
+Based on the paper and the provided instructions, here are some potential hypergraph rules and comments related to the co-evolution of supermassive black holes (SMBHs) and galaxies:
 
-```
-(* Ultra-Slow-Roll Inflation Rules *)
+```wolfram
+(* Initial Conditions *)
+(* Plant light SMBH seeds of mass mseed in halos with mass >= Mseed at high redshift zseed *)
+InitialSeedsRule = {{a, b}, {c, d}} -> {{a, e}, {b, e}, {c, f}, {d, f}, {e, mseed}, {f, mseed}}
+(* where a, b, c, d represent the initial halo structure, and e, f are the newly formed light SMBH seeds *)
 
-(* Initial State *)
-(* The initial state represents the slow-roll phase before the USR phase. 
-   It consists of a small number of nodes connected by hyperedges, 
-   representing the inflaton field and its perturbations. *)
-initialState = {{a, b}, {b, c}, {c, d}, {d, e}, {e, f}}
+(* SMBH Growth Rules *)
+(* Growth of SMBHs by mergers, with efficiency pBH *)
+MergerGrowthRule = {{x, y}, {z, w}} -> {{x, z}, {y, w}, {z, v}, {w, v}, {v, pBH * (y + w)}}
+(* where x, y, z, w represent the merging halos, v is the new merged halo, and the SMBH mass grows by pBH * (y + w) *)
 
-(* USR Phase Onset Rule *)
-(* This rule represents the onset of the USR phase, where the inflaton field
-   slows down significantly and perturbations start to grow. *)
-usrOnsetRule = {
-  {x, y} :> {{x, z}, {y, z}, {z, w1}, {z, w2}, {z, w3}, ...}
-}
+(* Growth of SMBHs by accretion, limited by Eddington rate *)
+AccretionGrowthRule = {{x, y}, {z, w}} -> {{x, y}, {z, v}, {w, v}, {v, w + min(frem * M, fEdd * mEdd)}}
+(* where x, y represent the existing halo and SMBH, z is the available gas, v is the updated halo with accreted gas,
+   frem is the fraction of remaining gas, M is the halo mass, fEdd is the Eddington fraction, and mEdd is the Eddington mass *)
 
-(* USR Evolution Rule *)
-(* During the USR phase, perturbations continue to grow and interact non-linearly.
-   The rule captures this by introducing new nodes and hyperedges, representing
-   the growth and coupling of perturbations. *)
-usrEvolutionRule = {
-  {x, y, z} :> {{x, y, z}, {x, y, w1}, {x, z, w2}, {y, z, w3}, ...}
-}
+(* Galaxy Growth Rules *)
+(* Growth of stellar mass by star formation *)
+StarFormationRule = {{x, y}, {z, w}} -> {{x, v}, {y, v}, {z, u}, {w, u}, {v, y + f_star * fcold * M}, {u, w - f_star * fcold * M}}
+(* where x, y represent the existing halo and stellar mass, z, w is the available gas, v, u are the updated halo and gas,
+   f_star is the star formation efficiency, fcold is the fraction of cold gas, and M is the halo mass *)
 
-(* USR Exit Rule *)
-(* This rule represents the end of the USR phase and the transition back to the
-   slow-roll phase. Perturbations freeze out, and the inflaton field resumes its
-   slow-roll evolution. *)
-usrExitRule = {
-  {x, y, z, w1, w2, ...} :> {{x, y}, {y, z}, {z, w1}, {w1, w2}, ...}
-}
-
-(* Slow-Roll Resumption Rule *)
-(* After exiting the USR phase, the inflaton field resumes its slow-roll evolution,
-   and perturbations freeze out. This rule captures the subsequent slow-roll phase. *)
-slowRollResumptionRule = {
-  {x, y} :> {{x, y}, {y, z}}
-}
-
-(* Simulation Rules *)
-simulationRules = {usrOnsetRule, usrEvolutionRule, usrExitRule, slowRollResumptionRule}
+(* Growth of stellar mass by mergers *)
+MergerStellarGrowthRule = {{x, y}, {z, w}} -> {{x, z}, {y, v}, {z, v}, {w, v}, {v, y + w}}
+(* where x, y, z, w represent the merging halos and stellar masses, v is the new merged halo, and the stellar mass grows by y + w *)
 ```
 
-**Notes:**
+Notes:
+- The initial conditions plant light SMBH seeds of mass `mseed` in halos with mass greater than or equal to `Mseed` at a high redshift `zseed`.
+- The `MergerGrowthRule` governs the growth of SMBHs through mergers, with an efficiency factor `pBH` representing the fraction of mergers that successfully form a tight SMBH binary.
+- The `AccretionGrowthRule` governs the growth of SMBHs through accretion, limited by the Eddington rate and the available gas fraction `frem`.
+- The `StarFormationRule` governs the growth of stellar mass through star formation, with efficiency `f_star` and the fraction of cold gas `fcold`.
+- The `MergerStellarGrowthRule` governs the growth of stellar mass through mergers of halos.
 
-- The rules capture the key phases of the USR inflation scenario: the onset of the USR phase, the growth and non-linear interactions of perturbations during the USR phase, the exit from the USR phase, and the resumption of the slow-roll phase.
-- The rules introduce new nodes and hyperedges to represent the growth and coupling of perturbations during the USR phase, capturing the non-linear dynamics and backreaction effects discussed in the paper.
-- The rules are intentionally simplified and do not capture all the detailed physics discussed in the paper. They serve as a basic framework to illustrate the concept of using hypergraph rules to model the USR inflation scenario.
-- The initial state represents the slow-roll phase before the USR phase, with a small number of nodes and hyperedges representing the inflaton field and its perturbations.
-- The simulation can be performed by applying the rules sequentially, starting from the initial state, and observing the evolution of the hypergraph structure.
-- The specific rule forms and the number of new nodes and hyperedges introduced can be adjusted to better match the physical observations and simulations described in the paper.
-
-These rules and notes provide a starting point for modeling the USR inflation scenario using hypergraph rewriting systems, capturing the key phases and non-linear dynamics discussed in the paper. Further refinements and extensions can be made to incorporate more detailed physics and match the simulation results more closely.
+These rules capture the key processes described in the paper for the co-evolution of SMBHs and galaxies, including the planting of initial SMBH seeds, their growth through mergers and accretion, and the growth of stellar mass through star formation and mergers.

@@ -1,7 +1,6 @@
 Using Wolfram's principles for constructing hypergraphs that are parallels to physical systems, can you turn an astrophysics paper into a set of rules for a physics hypergraph?
 
 For example, here is a hypergraph rule
-
 ```
 (* Light Seed Rules ~100 solar masses *) 
 rule1 = { rulea = {{x,y},{x,z}} -> {{x,z},{x,w},{y,w},{z,w}}, ruleb = {{p,q}} -> {{p,r},{q,r},{r,s}} }
@@ -10,12 +9,16 @@ rule1 = { rulea = {{x,y},{x,z}} -> {{x,z},{x,w},{y,w},{z,w}}, ruleb = {{p,q}} ->
 ```
 
 Example for rules:
+```wolfram
 (* LightSeedRule *)
 BasicSpaceStructure={{p,q}} -> {{p,r},{q,r},{r,s}}
 SeedBlackHoles={{x,y},{x,z}} -> {{x,z},{x,w},{y,w},{z,w}}
+```
+
 And write any other notes as comments (including initial state)
 
-Then generate string of rules
+Then generate string of rules.
+Note! Only use single letter alphanumeric characters for variables, as wolfram will get confused otherwise.
 
 Basic Physics Concepts
 space: general limiting structure of basic hypergraph

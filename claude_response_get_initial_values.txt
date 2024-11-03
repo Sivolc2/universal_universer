@@ -1,17 +1,11 @@
-Based on the provided rules, the largest rule that introduces new elements is `usrEvolutionRule`. It has the form:
+Based on the provided Wolfram rules, the largest rule is:
 
-```
-usrEvolutionRule = {
-  {x, y, z} :> {{x, y, z}, {x, y, w1}, {x, z, w2}, {y, z, w3}, ...}
-}
-```
+AccretionGrowthRule = {{x, y}, {z, w}} -> {{x, y}, {z, v}, {w, v}, {v, w + min(frem * M, fEdd * mEdd)}}
 
-To generate the initialization array, we need to consider the elements on the left-hand side of the rule, which are `x`, `y`, and `z`.
-
-Therefore, the appropriate initialization array would be:
+Therefore, the initialization array should be:
 
 ```wolfram
-initArray = {1, 2, 3}
+initArray = {{1, 1}, {0, 2, 3}, {0, 4, 5}, {0, 6, 7}}
 ```
 
-This array contains the numerical representations of the elements `x`, `y`, and `z`, which are required for the `usrEvolutionRule` to be applied.
+This initialization array represents the maximum number of elements in the left-hand side and right-hand side of the hypergraph rule. The first element `{1, 1}` indicates that there is one element on both sides of the rule, the second element `{0, 2, 3}` indicates that there are two elements on the left-hand side and three elements on the right-hand side, and so on.

@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from PyPDF2 import PdfReader
 import re
+import argparse
 
 # Add color constants at the top
 class Colors:
@@ -306,49 +307,78 @@ Please generate the appropriate initialization array."""
         print(f"{Colors.RED}Error generating initial values: {e}{Colors.ENDC}")
         return None
 
+def parse_args():
+    """Parse command line arguments"""
+    parser = argparse.ArgumentParser(description='Process papers for hypergraph analysis')
+    parser.add_argument('--pdf', type=str, help='Path to PDF file to analyze (skips arXiv fetch)')
+    return parser.parse_args()
+
 def main():
-    # Fetch papers
-    papers = fetch_arxiv_papers()
-    if not papers:
-        print("Failed to fetch papers from arXiv")
-        return
+    args = parse_args()
     
-    # Save and display paper list
-    save_paper_list(papers)
-    
-    # Have Claude select a paper
-    selection = get_claude_to_select_paper(papers)
-    if not selection:
-        print("Failed to get paper selection from Claude")
-        return
-    
-    print(f"\n{Colors.YELLOW}CLAUDE'S SELECTION AND REASONING:")
-    print("-"*40)
-    print(f"{Colors.CYAN}{selection}{Colors.ENDC}")
-    print(f"{Colors.YELLOW}{'-'*40}{Colors.ENDC}")
-    
-    # Extract paper number from Claude's response
-    try:
-        paper_num = int(selection.split()[1]) - 1
-        selected_paper = papers[paper_num]
-        print(f"\n{Colors.YELLOW}SELECTED PAPER DETAILS:")
+    if args.pdf:
+        # If PDF path provided, skip arXiv fetch and use local file
+        print(f"{Colors.CYAN}Using local PDF file: {args.pdf}{Colors.ENDC}")
+        paper_text = None
+        try:
+            with open(args.pdf, 'rb') as f:
+                reader = PdfReader(f)
+                paper_text = ""
+                for page in reader.pages:
+                    paper_text += page.extract_text() + "\n"
+            
+            # Create minimal paper info for local PDF
+            selected_paper = {
+                'title': os.path.basename(args.pdf),
+                'authors': 'Local PDF',
+                'abstract': 'Local PDF file analysis'
+            }
+        except Exception as e:
+            print(f"{Colors.RED}Error reading PDF file: {e}{Colors.ENDC}")
+            return
+    else:
+        # Original arXiv fetch workflow
+        papers = fetch_arxiv_papers()
+        if not papers:
+            print("Failed to fetch papers from arXiv")
+            return
+        
+        # Save and display paper list
+        save_paper_list(papers)
+        
+        # Have Claude select a paper
+        selection = get_claude_to_select_paper(papers)
+        if not selection:
+            print("Failed to get paper selection from Claude")
+            return
+        
+        print(f"\n{Colors.YELLOW}CLAUDE'S SELECTION AND REASONING:")
         print("-"*40)
-        print(f"{Colors.CYAN}Title: {selected_paper['title']}")
-        print(f"Authors: {selected_paper['authors']}")
-        print(f"arXiv ID: {selected_paper['arxiv_id']}{Colors.ENDC}")
+        print(f"{Colors.CYAN}{selection}{Colors.ENDC}")
         print(f"{Colors.YELLOW}{'-'*40}{Colors.ENDC}")
-    except Exception as e:
-        print(f"Error parsing paper selection: {e}")
-        return
+        
+        # Extract paper number from Claude's response
+        try:
+            paper_num = int(selection.split()[1]) - 1
+            selected_paper = papers[paper_num]
+            print(f"\n{Colors.YELLOW}SELECTED PAPER DETAILS:")
+            print("-"*40)
+            print(f"{Colors.CYAN}Title: {selected_paper['title']}")
+            print(f"Authors: {selected_paper['authors']}")
+            print(f"arXiv ID: {selected_paper['arxiv_id']}{Colors.ENDC}")
+            print(f"{Colors.YELLOW}{'-'*40}{Colors.ENDC}")
+        except Exception as e:
+            print(f"Error parsing paper selection: {e}")
+            return
+        
+        # Get paper text
+        print(f"\n{Colors.CYAN}Downloading and processing paper...{Colors.ENDC}")
+        paper_text = get_paper_text(selected_paper['arxiv_id'])
+        if not paper_text:
+            print("Failed to get paper text")
+            return
     
-    # Get paper text
-    print(f"\n{Colors.CYAN}Downloading and processing paper...{Colors.ENDC}")
-    paper_text = get_paper_text(selected_paper['arxiv_id'])
-    if not paper_text:
-        print("Failed to get paper text")
-        return
-    
-    # Get prompt and analyze paper
+    # Continue with analysis (same for both paths)
     prompt = read_prompt()
     response = get_claude_analysis(prompt, paper_text, selected_paper)
     
@@ -363,7 +393,6 @@ def main():
         
         save_wolfram_code(response)
         
-        # Add the new initial values generation step
         init_response = get_initial_values()
         if init_response:
             print(f"\n{Colors.CYAN}INITIALIZATION VALUES:")
