@@ -1,11 +1,19 @@
-Based on the provided Wolfram rules, the largest rule is:
-
-AccretionGrowthRule = {{x, y}, {z, w}} -> {{x, y}, {z, v}, {w, v}, {v, w + min(frem * M, fEdd * mEdd)}}
-
-Therefore, the initialization array should be:
+Based on the provided rules, the largest rule appears to be `LatticeDynamicsRule`, which has the following structure:
 
 ```wolfram
-initArray = {{1, 1}, {0, 2, 3}, {0, 4, 5}, {0, 6, 7}}
+LatticeDynamicsRule = {
+  {InitialState, InflatonPotential, BackgroundEvolution, ScalarPerturbations} ->
+  {LatticeDynamics, NonlinearDynamics, BackreactionOnBackground}
+}
 ```
 
-This initialization array represents the maximum number of elements in the left-hand side and right-hand side of the hypergraph rule. The first element `{1, 1}` indicates that there is one element on both sides of the rule, the second element `{0, 2, 3}` indicates that there are two elements on the left-hand side and three elements on the right-hand side, and so on.
+Therefore, the initialization array for this rule would be:
+
+```wolfram
+initArray = {{1, 1, 1, 1}, {0, 0, 0}}
+```
+
+Here's the breakdown:
+- The left-hand side of the rule has 4 elements: `InitialState`, `InflatonPotential`, `BackgroundEvolution`, and `ScalarPerturbations`.
+- The right-hand side of the rule has 3 elements: `LatticeDynamics`, `NonlinearDynamics`, and `BackreactionOnBackground`.
+- Each element is assigned an integer value, starting from 1 for the left-hand side and 0 for the right-hand side.

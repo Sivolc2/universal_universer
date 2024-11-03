@@ -1,4 +1,9 @@
 (* Generated Initial Values for Wolfram Rules *)
 
-initArray = {{1, 1}, {0, 2, 3}, {0, 4, 5}, {0, 6, 7}}
+LatticeDynamicsRule = {
+  {InitialState, InflatonPotential, BackgroundEvolution, ScalarPerturbations} ->
+  {LatticeDynamics, NonlinearDynamics, BackreactionOnBackground}
+}
+
+initArray = {{1, 1, 1, 1}, {0, 0, 0}}
 
