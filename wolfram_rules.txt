@@ -1,25 +1,44 @@
 (* Generated Wolfram Rules from ArXiv Paper Analysis *)
 
 (* Block 1 *)
-(* Inflation Rules *)
+(* Ultra-Slow-Roll Inflation Rules *)
 
-(* Initial conditions for slow-roll inflation *)
-initSlowRoll = {{phi, phidot}, {H, epsilon, eta}}
+(* Initial State *)
+(* The initial state represents the slow-roll phase before the USR phase. 
+   It consists of a small number of nodes connected by hyperedges, 
+   representing the inflaton field and its perturbations. *)
+initialState = {{a, b}, {b, c}, {c, d}, {d, e}, {e, f}}
 
-(* Transition to ultra-slow-roll phase *)
-usrTransition = {{phi, phidot}, {H, epsilon, eta}} -> {{phi, phidotUSR}, {HUSR, epsilonUSR, etaUSR}}
- 
-(* Ultra-slow-roll dynamics *)
-usrEvolution = {{phi, phidotUSR}, {HUSR, epsilonUSR, etaUSR}} -> {{phi', phidot'}, {H', epsilon', eta'}}
+(* USR Phase Onset Rule *)
+(* This rule represents the onset of the USR phase, where the inflaton field
+   slows down significantly and perturbations start to grow. *)
+usrOnsetRule = {
+  {x, y} :> {{x, z}, {y, z}, {z, w1}, {z, w2}, {z, w3}, ...}
+}
 
-(* Generate primordial perturbations *)
-perturbationGeneration = {{phi', phidot'}, {H', epsilon', eta'}} -> {{phi'', phidot''}, {H'', epsilon'', eta''}, {zetaModes}}
+(* USR Evolution Rule *)
+(* During the USR phase, perturbations continue to grow and interact non-linearly.
+   The rule captures this by introducing new nodes and hyperedges, representing
+   the growth and coupling of perturbations. *)
+usrEvolutionRule = {
+  {x, y, z} :> {{x, y, z}, {x, y, w1}, {x, z, w2}, {y, z, w3}, ...}
+}
 
-(* Transition back to slow-roll after USR *)  
-postUsrTransition = {{phi'', phidot''}, {H'', epsilon'', eta''}, {zetaModes}} -> {{phif, phidotf}, {Hf, epsilonf, etaf}, {zetaSpectrum}}
+(* USR Exit Rule *)
+(* This rule represents the end of the USR phase and the transition back to the
+   slow-roll phase. Perturbations freeze out, and the inflaton field resumes its
+   slow-roll evolution. *)
+usrExitRule = {
+  {x, y, z, w1, w2, ...} :> {{x, y}, {y, z}, {z, w1}, {w1, w2}, ...}
+}
 
-(* Rules for different USR scenarios *)
-caseI = {usrTransition, usrEvolution /. etaUSR -> 3.5, postUsrTransition}   (* Wands duality case *)
-caseII = {usrTransition, usrEvolution /. etaUSR -> 3.0, postUsrTransition}  (* Repulsive case *)  
-caseIII = {usrTransition, usrEvolution /. etaUSR -> 4.5, postUsrTransition} (* Attractive case *)
+(* Slow-Roll Resumption Rule *)
+(* After exiting the USR phase, the inflaton field resumes its slow-roll evolution,
+   and perturbations freeze out. This rule captures the subsequent slow-roll phase. *)
+slowRollResumptionRule = {
+  {x, y} :> {{x, y}, {y, z}}
+}
+
+(* Simulation Rules *)
+simulationRules = {usrOnsetRule, usrEvolutionRule, usrExitRule, slowRollResumptionRule}
 

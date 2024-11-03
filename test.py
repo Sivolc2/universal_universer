@@ -238,6 +238,74 @@ def save_wolfram_code(response, filename="wolfram_rules.txt"):
             
     print(f"{Colors.GREEN}Wolfram code saved successfully!{Colors.ENDC}")
 
+def get_initial_values(wolfram_rules_file="wolfram_rules.txt", prompt_file="prompt_rule_extractor.txt"):
+    """Get initialization values from Claude based on Wolfram rules"""
+    print(f"\n{Colors.YELLOW}{'='*80}")
+    print("GENERATING INITIAL VALUES")
+    print(f"{'='*80}{Colors.ENDC}")
+    
+    try:
+        # Read the rules and prompt
+        with open(wolfram_rules_file, 'r') as f:
+            rules = f.read()
+        with open(prompt_file, 'r') as f:
+            prompt = f.read()
+            
+        print(f"{Colors.CYAN}Asking Claude to generate initialization values...{Colors.ENDC}")
+        
+        client = anthropic.Client()
+        
+        full_prompt = f"""Here are the Wolfram rules:
+
+{rules}
+
+Based on these rules and following these instructions:
+
+{prompt}
+
+Please generate the appropriate initialization array."""
+        
+        message = client.messages.create(
+            model="claude-3-sonnet-20240229",
+            max_tokens=1000,
+            temperature=0.7,
+            system="You are an expert in Wolfram Language and hypergraph initialization.",
+            messages=[{
+                "role": "user",
+                "content": full_prompt
+            }]
+        )
+        
+        if message.content:
+            response = message.content[0].text
+            
+            # Save Claude's full response
+            with open("claude_response_get_initial_values.txt", 'w') as f:
+                f.write(response)
+            print(f"{Colors.GREEN}Full response saved to claude_response_get_initial_values.txt{Colors.ENDC}")
+            
+            # Extract code blocks
+            init_blocks = re.findall(r'```(?:wolfram)?(.*?)```', response, re.DOTALL)
+            
+            if init_blocks:
+                print(f"\n{Colors.GREEN}Initial values generated successfully!{Colors.ENDC}")
+                
+                # Save to file
+                with open("wolfram_initial_values.txt", 'w') as f:
+                    f.write("(* Generated Initial Values for Wolfram Rules *)\n\n")
+                    for block in init_blocks:
+                        f.write(block.strip() + "\n\n")
+                
+                print(f"{Colors.GREEN}Initial values saved to wolfram_initial_values.txt{Colors.ENDC}")
+                return response
+            else:
+                print(f"{Colors.YELLOW}No initialization code blocks found in response{Colors.ENDC}")
+                return response  # Return response even if no code blocks found
+                
+    except Exception as e:
+        print(f"{Colors.RED}Error generating initial values: {e}{Colors.ENDC}")
+        return None
+
 def main():
     # Fetch papers
     papers = fetch_arxiv_papers()
@@ -293,8 +361,14 @@ def main():
         save_response(response)
         print(f"\n{Colors.GREEN}Analysis saved to claude_response.txt{Colors.ENDC}")
         
-        # Add this line to save Wolfram code
         save_wolfram_code(response)
+        
+        # Add the new initial values generation step
+        init_response = get_initial_values()
+        if init_response:
+            print(f"\n{Colors.CYAN}INITIALIZATION VALUES:")
+            print("-"*40)
+            print(f"{init_response}{Colors.ENDC}")
     else:
         print(f"{Colors.RED}Failed to get analysis from Claude{Colors.ENDC}")
 

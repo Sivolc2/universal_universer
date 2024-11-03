@@ -1,0 +1,12 @@
+Hiya! Please take the following string of rules and generate a initialization array.
+eg if the largest rule is:
+```
+usrTransition = {{phi, phidot}, {H, epsilon, eta}} -> {{phi, phidotUSR}, {HUSR, epsilonUSR, etaUSR}}
+```
+
+then return the initialization array of:
+```wolfram
+initArray = {{1, 1}, {0, 2, 3}}
+```
+Make sure to assign it numbers! It can't be variables.
+

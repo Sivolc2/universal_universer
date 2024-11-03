@@ -1,0 +1,8 @@
+(* Generated Initial Values for Wolfram Rules *)
+
+usrEvolutionRule = {
+  {x, y, z} :> {{x, y, z}, {x, y, w1}, {x, z, w2}, {y, z, w3}, ...}
+}
+
+initArray = {1, 2, 3}
+
